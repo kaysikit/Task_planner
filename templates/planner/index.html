@@ -15,11 +15,12 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Task</th>
-          <th scope="col">End Date</th>
+          <th scope="col">Deadline</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
       <tbody>
+      {% if latest_task_list %}
       {% for task in latest_task_list %}
         <tr>
           <th scope="row">{{ task.id }}</th>
@@ -28,6 +29,7 @@
           <td>{{ task.status }}</td>
         </tr>
       {% endfor %}
+      {% endif %}
       </tbody>
     </table>
 {% endblock content %}
