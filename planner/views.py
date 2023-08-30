@@ -25,4 +25,14 @@ def add_task(request):
     context = {
         'form': form
     }
-    return render(request, "planner/Add_task.html", context)
+    return render(request, "planner/addTask.html", context)
+
+
+def view_task(request):
+    latest_task_list = Task.objects.order_by("-id")
+    status_list = Status.objects.all()
+    context = {
+        "latest_task_list": latest_task_list,
+        "status_list": status_list,
+    }
+    return render(request, "planner/task.html", context)

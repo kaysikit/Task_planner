@@ -1,5 +1,9 @@
 {% extends "planner/base.html" %}
 
+{% block title%}
+    <title>Planner - Home</title>
+{% endblock title %}
+
 {% block nav %}
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active" aria-current="page">Home</a></li>
@@ -23,7 +27,7 @@
       {% if latest_task_list %}
       {% for task in latest_task_list %}
         <tr>
-          <th scope="row">{{ task.id }}</th>
+          <th scope="row"><a href="">Подробнее</a></th>
           <td>{{ task.title }}</td>
           <td>{{ task.end_date }}</td>
           <td>{{ task.status }}</td>
