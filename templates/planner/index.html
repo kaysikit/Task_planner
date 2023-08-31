@@ -27,7 +27,7 @@
       {% if latest_task_list %}
       {% for task in latest_task_list %}
         <tr>
-          <th scope="row"><a href="">Подробнее</a></th>
+          <th scope="row"><a href="{% url 'view_task' task.pk %}">Подробнее</a></th>
           <td>{{ task.title }}</td>
           <td>{{ task.end_date }}</td>
           <td>{{ task.status }}</td>

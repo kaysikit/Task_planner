@@ -2,28 +2,27 @@
 
 {% block content %}
 <div class="container text-center">
-  <div class="row">
+{% for task in latest_task_list %}
+  <div class="row mb-5">
     <div class="col">
-      1 of 3
+      {{ task.start_date }}
     </div>
     <div class="col-6">
-      2 of 3 (wider)
+      <h1>{{ task.title }}</h1>
     </div>
     <div class="col">
-      3 of 3
+      {{ task.end_date }}
     </div>
   </div>
   <div class="row">
     <div class="col">
-      1 of 3
-    </div>
-    <div class="col-5">
-      2 of 3 (wider)
+      {{ task.task }}
     </div>
     <div class="col">
-      3 of 3
+      {{ task.status }}
     </div>
   </div>
+{% endfor %}
 </div>
 
 {% endblock content %}

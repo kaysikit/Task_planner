@@ -6,10 +6,8 @@ from.forms import AddTaskForm
 
 def index(request):
     latest_task_list = Task.objects.order_by("-id")
-    status_list = Status.objects.all()
     context = {
         "latest_task_list": latest_task_list,
-        "status_list": status_list,
     }
     return render(request, "planner/index.html", context)
 
@@ -28,11 +26,9 @@ def add_task(request):
     return render(request, "planner/addTask.html", context)
 
 
-def view_task(request):
-    latest_task_list = Task.objects.order_by("-id")
-    status_list = Status.objects.all()
+def view_task(request, task_id):
+    latest_task_list = Task.objects.filter(pk=task_id)
     context = {
         "latest_task_list": latest_task_list,
-        "status_list": status_list,
     }
     return render(request, "planner/task.html", context)
