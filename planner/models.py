@@ -12,7 +12,6 @@ class Status(models.Model):
         verbose_name_plural = "Статусы"
         ordering = ['id', ]
 
-
 class Task(models.Model):
     title = models.CharField(max_length=50, verbose_name="Задача")
     task = models.TextField(max_length=1000, verbose_name="Описание задачи")

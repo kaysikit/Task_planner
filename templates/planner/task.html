@@ -4,25 +4,42 @@
 <div class="container text-center">
 {% for task in latest_task_list %}
   <div class="row mb-5">
-    <div class="col">
-      {{ task.start_date }}
+    <div class="col-4">
+      <h2>{{ task.title }}</h2>
     </div>
-    <div class="col-6">
-      <h1>{{ task.title }}</h1>
-    </div>
-    <div class="col">
-      {{ task.end_date }}
+    <div class="col-8">
+      <p>{{ task.task }}</p>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      {{ task.task }}
+      <p>Start task</p>
+      <p>{{ task.start_date }}</p>
     </div>
     <div class="col">
-      {{ task.status }}
+      <p>Deadline</p>
+      <p>{{ task.end_date }}</p>
+    </div>
+    <div class="col">
+      <p>Status</p>
+      {% if task.status == 'Выполнено' %}
+        <p class="badge text-bg-success rounded-pill">{{ task.status }}</p>
+      {% else %}
+        <p class="badge text-bg-warning rounded-pill">{{ task.status }}</p>
+      {% endif %}
     </div>
   </div>
 {% endfor %}
 </div>
-
+<div class="container text-center">
+  <form action="" method="post">
+        {% csrf_token %}
+        <div class="row-form-errors">{{ form.non_field_errors }}</div>
+        {% for field in form %}
+            {{ field.label }}:
+            {{ field }}
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Change</button>
+    </form>
+</div>
 {% endblock content %}

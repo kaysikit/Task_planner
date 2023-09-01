@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .models import Task, Status
-from.forms import AddTaskForm
+from .models import Task
+from.forms import AddTaskForm, ChangeTaskStatus
 
 
 def index(request):
@@ -28,7 +28,9 @@ def add_task(request):
 
 def view_task(request, task_id):
     latest_task_list = Task.objects.filter(pk=task_id)
+    form = ChangeTaskStatus()
     context = {
         "latest_task_list": latest_task_list,
+        "form": form,
     }
     return render(request, "planner/task.html", context)
