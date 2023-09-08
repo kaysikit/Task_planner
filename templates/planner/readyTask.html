@@ -6,9 +6,9 @@
 
 {% block nav %}
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="{% url 'add_task' %}" class="nav-link">Add task</a></li>
-        <li class="nav-item"><a href="{% url 'ready_task' %}" class="nav-link">Ready</a></li>
+        <li class="nav-item"><a href="{% url 'ready_task' %}" class="nav-link active">Ready</a></li>
       </ul>
 {% endblock nav %}
 
