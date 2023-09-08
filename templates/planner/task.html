@@ -32,7 +32,8 @@
 {% endfor %}
 </div>
 <div class="container text-center">
-  <form action="" method="post">
+    {% for task in latest_task_list %}
+  <form action="{% url 'view_task' task.pk %}" method="post">
         {% csrf_token %}
         <div class="row-form-errors">{{ form.non_field_errors }}</div>
         {% for field in form %}
@@ -41,5 +42,6 @@
         {% endfor %}
         <button type="submit" class="btn btn-primary">Change</button>
     </form>
+    {% endfor %}
 </div>
 {% endblock content %}
