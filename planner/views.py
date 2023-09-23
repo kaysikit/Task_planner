@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from .models import Task
@@ -46,8 +47,11 @@ def view_task(request, task_id):
 
 def view_ready_task(request):
     latest_task_list = Task.objects.exclude(status=1).order_by("-end_date")
+    paginator = Paginator(latest_task_list, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        "latest_task_list": latest_task_list,
+        "page_obj": page_obj,
     }
     return render(request, "planner/readyTask.html", context)
 
